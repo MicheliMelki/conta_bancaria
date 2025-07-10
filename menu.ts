@@ -2,13 +2,16 @@
 import ler = require("readline-sync");
 import { colors } from "./src/util/colors";
 import { Conta } from "./src/model/conta";
+import { ContaCorrente } from "./src/model/ContaCorrente";
+import { ContaPoupanca } from "./src/model/ContaPoupanca";
+
 
 
 // Função principal que exibe o menu do sistema bancário e executa operações básicas de teste.
 export function main() {
     let opcao: number;
 
-    //Criação de uma instância de Conta para fins de teste (valores simulados)
+    //Criação de uma Conta
     const conta: Conta = new Conta(1, 123, 1, "Adriana", 10000);
 
     // Demonstração de métodos da conta para visualização e operações básicas
@@ -19,7 +22,31 @@ export function main() {
     conta.visualizar();         // Mostra dados após depósito
 
 
-    // Mostra dados após depósito
+    //Criação de uma Conta
+    const contaCorrente: ContaCorrente = new ContaCorrente(2, 123, 1, "Mariana", 15000, 10000);
+
+    // Demonstração de métodos da conta para visualização e operações básicas
+    conta.visualizar();         // Mostra dados iniciais da conta
+    conta.sacar(10500);         // Tenta sacar valor maior que o saldo
+    conta.visualizar();         // Mostra dados após tentativa de saque
+    conta.depositar(5000);       // Realiza depósito
+    conta.visualizar();         // Mostra dados após depósito
+
+
+        //Criação de uma Conta
+    const contapoupanca: ContaPoupanca = new ContaPoupanca(3, 123, 2, "Victor", 10000, 10);
+
+    // Demonstração de métodos da conta para visualização e operações básicas
+    conta.visualizar();         // Mostra dados iniciais da conta
+    conta.sacar(10500);         // Tenta sacar valor maior que o saldo
+    conta.visualizar();         // Mostra dados após tentativa de saque
+    conta.depositar(5000);       // Realiza depósito
+    conta.visualizar();         // Mostra dados após depósito
+
+
+    
+
+    
     while (true) {
 
         // Cabeçalho visual do sistema com estilização ANSI (azul forte)
